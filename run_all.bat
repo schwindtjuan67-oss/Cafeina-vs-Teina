@@ -13,13 +13,15 @@ REM Ir a la carpeta del proyecto (donde está este .bat)
 cd /d "%~dp0"
 
 REM --- Config ---
-set VENV_DIR=.venv
-set IMAGE_FILE=caffeine_structure.png
+set "VENV_DIR=.venv"
+set "IMAGE_FILE=caffeine_structure.png"
 
 REM --- Elegir python base (para crear venv) ---
 REM Si "python" no está en PATH, poné ruta fija:
-REM set PYEXE=C:\Python314\python.exe
-set PYEXE=python
+REM set "PYEXE=C:\Python314\python.exe"
+set "PYEXE=python"
+
+set "VENV_PY=%VENV_DIR%\Scripts\python.exe"
 
 echo ==========================================================
 echo [0] Proyecto: %CD%
@@ -40,9 +42,9 @@ if not exist "%IMAGE_FILE%" (
 
 echo.
 echo ==========================================================
-echo [1/4] Verificando Python...
+echo [1/4] Verificando Python base...
 echo ==========================================================
-%PYEXE% --version
+"%PYEXE%" --version
 if errorlevel 1 (
   echo [ERROR] No se encontro Python. Ajusta PYEXE en este .bat o agrega Python al PATH.
   pause
@@ -53,8 +55,8 @@ echo.
 echo ==========================================================
 echo [2/4] Creando venv si no existe: %VENV_DIR%
 echo ==========================================================
-if not exist "%VENV_DIR%\Scripts\python.exe" (
-  %PYEXE% -m venv "%VENV_DIR%"
+if not exist "%VENV_PY%" (
+  "%PYEXE%" -m venv "%VENV_DIR%"
   if errorlevel 1 (
     echo [ERROR] Fallo al crear el venv.
     pause
@@ -67,16 +69,9 @@ if not exist "%VENV_DIR%\Scripts\python.exe" (
 
 echo.
 echo ==========================================================
-echo [3/4] Activando venv e instalando dependencias...
+echo [3/4] Instalando dependencias en el venv...
 echo ==========================================================
-call "%VENV_DIR%\Scripts\activate"
-if errorlevel 1 (
-  echo [ERROR] No pude activar el venv.
-  pause
-  exit /b 1
-)
-
-python -m pip install --upgrade pip
+"%VENV_PY%" -m pip install --upgrade pip
 if errorlevel 1 (
   echo [ERROR] Fallo upgrade de pip.
   pause
@@ -86,10 +81,10 @@ if errorlevel 1 (
 REM Instala deps
 if exist "requirements.txt" (
   echo [INFO] Instalando desde requirements.txt
-  pip install -r requirements.txt
+  "%VENV_PY%" -m pip install -r "requirements.txt"
 ) else (
   echo [INFO] requirements.txt no encontrado. Instalando minimo: matplotlib
-  pip install matplotlib
+  "%VENV_PY%" -m pip install matplotlib
 )
 
 if errorlevel 1 (
@@ -106,8 +101,8 @@ echo [INFO] Si hay matplotlib, la imagen se mostrara en una ventana.
 echo [INFO] Si no, el script intentara abrirla con el visor de Windows.
 echo.
 
-python mateina_vs_cafeina.py --image "%IMAGE_FILE%"
-set EXITCODE=%ERRORLEVEL%
+"%VENV_PY%" "mateina_vs_cafeina.py" --image "%IMAGE_FILE%"
+set "EXITCODE=%ERRORLEVEL%"
 
 echo.
 echo ==========================================================
