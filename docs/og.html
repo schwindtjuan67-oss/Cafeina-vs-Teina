@@ -29,10 +29,10 @@
     .canvas{
       width:1200px;
       height:630px;
-      padding:48px;
+      padding:40px;
       display:grid;
       grid-template-rows:auto 1fr auto;
-      gap:26px;
+      gap:20px;
       border:1px solid var(--line);
       border-radius:28px;
       background:rgba(255,255,255,.58);
@@ -46,15 +46,15 @@
       letter-spacing:.2px;
     }
     .subtitle{
-      margin:14px 0 0;
-      font-size:29px;
+      margin:10px 0 0;
+      font-size:28px;
       color:var(--muted);
       letter-spacing:.2px;
     }
     .middle{
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:24px;
+      grid-template-rows:auto 1fr;
+      gap:18px;
       align-items:stretch;
     }
     .chips{display:flex; gap:10px; flex-wrap:wrap; align-content:flex-start;}
@@ -66,36 +66,54 @@
       background:var(--chip-bg);
       color:#475467;
     }
-    .formula{
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:18px;
+    .hero{
       display:grid;
-      grid-template-rows:auto auto 1fr;
-      gap:10px;
+      grid-template-columns:62% 38%;
+      gap:20px;
+      min-height:0;
     }
-    .formula h2{
-      margin:0;
-      font-size:34px;
-      letter-spacing:.4px;
-    }
-    .formula p{
-      margin:0;
-      font-size:22px;
-      color:var(--muted);
-    }
-    .structure{
+    .molBox{
       height:320px;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:18px;
+      padding:20px;
       border-radius:18px;
       border:1px solid rgba(31,41,55,.10);
-      background:rgba(255,255,255,.75);
+      background:rgba(255,255,255,.72);
+      box-shadow:0 10px 28px rgba(31,41,55,.06);
       overflow:hidden;
     }
+    .infoBox{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px 18px 16px;
+      display:grid;
+      grid-template-rows:auto auto auto;
+      gap:8px;
+      align-content:start;
+      box-shadow:0 10px 28px rgba(31,41,55,.06);
+    }
+    .infoBox h2{
+      margin:0;
+      font-size:52px;
+      line-height:1;
+      letter-spacing:.4px;
+    }
+    .infoBox p{
+      margin:0;
+      font-size:35px;
+      color:var(--muted);
+    }
+    .facts{
+      margin:4px 0 0;
+      padding-left:20px;
+      font-size:27px;
+      line-height:1.35;
+      color:#435264;
+    }
+    .facts li{margin:0}
     .molImg{
       max-width:100%;
       max-height:100%;
@@ -114,7 +132,7 @@
       padding:20px;
     }
     footer{
-      font-size:17px;
+      font-size:16px;
       color:#7a8797;
       letter-spacing:.2px;
     }
@@ -135,13 +153,20 @@
         <span class="chip">contexto distinto</span>
       </div>
 
-      <aside class="formula" aria-label="Identidad química">
-        <h2>C8H10N4O2</h2>
-        <p>1,3,7-trimetilxantina</p>
-        <div class="structure">
+      <div class="hero">
+        <div class="molBox" aria-label="Estructura química de la cafeína">
           <img class="molImg" src="caffeine_structure.svg" alt="Estructura química de la cafeína" />
         </div>
-      </aside>
+        <aside class="infoBox" aria-label="Identidad química">
+          <h2>C8H10N4O2</h2>
+          <p>1,3,7-trimetilxantina</p>
+          <ul class="facts" aria-label="Datos clave">
+            <li>teína = cafeína</li>
+            <li>mateína = cafeína</li>
+            <li>misma molécula ✅</li>
+          </ul>
+        </aside>
+      </div>
     </section>
 
     <footer>schwindtjuan67-oss.github.io/Cafeina-vs-Teina/</footer>
