@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OG — Cafeína vs Teína vs Mateína</title>
+  <style>
+    :root{
+      --bg:#faf7f2;
+      --ink:#1f2937;
+      --muted:#5f6b7a;
+      --line:rgba(31,41,55,.12);
+      --chip-bg:rgba(255,255,255,.72);
+      --panel:#ffffff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--ink);
+      background:
+        radial-gradient(900px 520px at 10% 8%, rgba(124,92,255,.13), transparent 65%),
+        radial-gradient(860px 500px at 92% 6%, rgba(14,165,233,.14), transparent 62%),
+        var(--bg);
+    }
+    .canvas{
+      width:1200px;
+      height:630px;
+      padding:48px;
+      display:grid;
+      grid-template-rows:auto 1fr auto;
+      gap:26px;
+      border:1px solid var(--line);
+      border-radius:28px;
+      background:rgba(255,255,255,.58);
+      backdrop-filter:blur(2px);
+      overflow:hidden;
+    }
+    h1{
+      margin:0;
+      font-size:72px;
+      line-height:1.03;
+      letter-spacing:.2px;
+    }
+    .subtitle{
+      margin:14px 0 0;
+      font-size:29px;
+      color:var(--muted);
+      letter-spacing:.2px;
+    }
+    .middle{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:24px;
+      align-items:stretch;
+    }
+    .chips{display:flex; gap:10px; flex-wrap:wrap; align-content:flex-start;}
+    .chip{
+      font-size:20px;
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:var(--chip-bg);
+      color:#475467;
+    }
+    .formula{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      display:grid;
+      grid-template-rows:auto auto 1fr;
+      gap:10px;
+    }
+    .formula h2{
+      margin:0;
+      font-size:34px;
+      letter-spacing:.4px;
+    }
+    .formula p{
+      margin:0;
+      font-size:22px;
+      color:var(--muted);
+    }
+    .structure{
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      min-height:220px;
+      position:relative;
+      padding:10px;
+    }
+    .structure object{
+      width:100%;
+      height:100%;
+      display:block;
+    }
+    .fallback{
+      display:grid;
+      place-items:center;
+      text-align:center;
+      font-size:24px;
+      color:var(--muted);
+      height:100%;
+      padding:20px;
+    }
+    footer{
+      font-size:17px;
+      color:#7a8797;
+      letter-spacing:.2px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Abrí og.html, sacá screenshot 1200x630, guardalo como og.png dentro de /docs. Luego commit/push para que Discord use og.png. -->
+  <main class="canvas" role="img" aria-label="Preview social de Cafeína vs Teína vs Mateína">
+    <header>
+      <h1>Cafeína vs Teína vs Mateína</h1>
+      <p class="subtitle">Misma molécula · distinta dosis · distinto contexto</p>
+    </header>
+
+    <section class="middle">
+      <div class="chips" aria-label="Conceptos clave">
+        <span class="chip">misma molécula</span>
+        <span class="chip">empaque</span>
+        <span class="chip">dosis</span>
+      </div>
+
+      <aside class="formula" aria-label="Identidad química">
+        <h2>C8H10N4O2</h2>
+        <p>1,3,7-trimetilxantina</p>
+        <div class="structure">
+          <object data="caffeine_structure.svg" type="image/svg+xml" aria-label="Estructura química de la cafeína">
+            <div class="fallback">Estructura de la cafeína</div>
+          </object>
+        </div>
+      </aside>
+    </section>
+
+    <footer>schwindtjuan67-oss.github.io/Cafeina-vs-Teina/</footer>
+  </main>
+</body>
+</html>
