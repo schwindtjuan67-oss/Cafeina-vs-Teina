@@ -10,19 +10,14 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="icon" type="image/svg+xml" href="favicon-v2.svg">
   <link rel="icon" href="favicon-v2.svg" sizes="any">
-  <meta name="description" content="Cafeína vs teína vs mateína: misma molécula (cafeína), distinto contexto y dosis según el empaque (café, té, mate). Minimal chill: café + lluvia.">
-
-  <!-- Open Graph -->
+  <meta name="description" content="Cafeína, teína y mateína: tres nombres para la misma molécula. Cambian la planta, la dosis y el contexto de consumo.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Cafeína vs Teína vs Mateína">
-  <meta property="og:description" content="Tres nombres, un mismo compuesto. Lo que cambia es la planta, la dosis y el contexto.">
+  <meta property="og:title" content="Cafeína vs “Teína” vs “Mateína”">
+  <meta property="og:description" content="Tres nombres, un mismo compuesto: cafeína. Diferencias percibidas por matriz, dosis y contexto.">
   <meta property="og:url" content="https://schwindtjuan67-oss.github.io/Cafeina-vs-Teina/">
-
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Cafeína vs Teína vs Mateína">
-  <meta name="twitter:description" content="Misma molécula, distinta dosis y contexto (café · té · mate).">
-
+  <meta name="twitter:title" content="Cafeína vs “Teína” vs “Mateína”">
+  <meta name="twitter:description" content="Teína y mateína son etiquetas históricas/culturales para la misma molécula: cafeína.">
 
   <style>
     :root{
@@ -160,6 +155,30 @@
       font-weight:600;
       font-size:12px;
     }
+    .site-footer{
+      margin-top:18px;
+      padding:10px 18px 16px;
+      font-size:12.5px;
+      color:var(--muted);
+    }
+    .site-footer .line{
+      height:1px;
+      background:var(--line);
+      margin:0 auto 10px;
+      max-width:960px;
+    }
+    .site-footer .row{
+      max-width:960px;
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px 14px;
+    }
+    .site-footer .sources{display:flex; flex-wrap:wrap; gap:4px 8px;}
+    .site-footer a{color:var(--muted); text-decoration:none;}
+    .site-footer a:hover{color:var(--ink); text-decoration:underline;}
   </style>
 </head>
 
@@ -261,5 +280,20 @@ Yerba mate 6oz ~40–80 mg (≈8oz ~53–107 mg)</div>
       </div>
     </div>
   </div>
+
+  <footer class="site-footer">
+    <div class="line"></div>
+    <div class="row">
+      <span>mood: café + lluvia</span>
+      <span class="sources">
+        Fuentes:
+        <a href="https://pubchem.ncbi.nlm.nih.gov/compound/Caffeine" target="_blank" rel="noopener">PubChem</a>
+        ·
+        <a href="https://webbook.nist.gov/cgi/cbook.cgi?ID=C58082" target="_blank" rel="noopener">NIST</a>
+        ·
+        <a href="https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:27732" target="_blank" rel="noopener">ChEBI</a>
+      </span>
+    </div>
+  </footer>
 </body>
 </html>
