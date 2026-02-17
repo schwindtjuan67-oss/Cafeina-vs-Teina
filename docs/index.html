@@ -76,6 +76,50 @@
       background:#fff;
       padding:10px;
     }
+    .infobox{
+      margin-top:12px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fcfcfd;
+      overflow:hidden;
+    }
+    .infobox-title{
+      margin:0;
+      padding:10px 12px;
+      font-size:13px;
+      font-weight:700;
+      color:var(--muted);
+      letter-spacing:.2px;
+      border-bottom:1px solid var(--line);
+      background:rgba(31,41,55,.02);
+    }
+    .infobox table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:13px;
+    }
+    .infobox th,
+    .infobox td{
+      text-align:left;
+      vertical-align:top;
+      padding:8px 12px;
+      border-bottom:1px solid var(--line);
+    }
+    .infobox tr:last-child th,
+    .infobox tr:last-child td{border-bottom:none;}
+    .infobox th{
+      width:40%;
+      color:var(--muted);
+      font-weight:600;
+    }
+    .infobox code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:12px;
+      background:rgba(31,41,55,.04);
+      border:1px solid var(--line);
+      border-radius:6px;
+      padding:1px 5px;
+    }
     a{color:var(--accent2); text-decoration:none}
     a:hover{text-decoration:underline}
     .hr{
@@ -178,13 +222,22 @@ Yerba mate 6oz ~40–80 mg (≈8oz ~53–107 mg)</div>
         <p class="muted" style="margin-top:-4px;">
           La misma estructura para cafeína / “mateína”.
         </p>
-        <picture>
-          <source srcset="caffeine_structure.svg" type="image/svg+xml">
-          <img class="img" src="caffeine_structure.png" alt="Estructura de cafeína">
-        </picture>
-        <p class="muted" style="margin:12px 0 0; font-size:13px;">
-          Vector (SVG): nitidez perfecta en cualquier zoom.
-        </p>
+        <img class="img" src="caffeine_structure.svg" alt="Estructura 2D de la cafeína (teína/mateína)" style="background:#fff;">
+        <div class="infobox">
+          <p class="infobox-title">Ficha técnica — Cafeína</p>
+          <table>
+            <tr><th>Fórmula</th><td>C8H10N4O2</td></tr>
+            <tr><th>Masa molar</th><td>194.19 g/mol</td></tr>
+            <tr><th>Nombre IUPAC</th><td>1,3,7-trimethylpurine-2,6-dione</td></tr>
+            <tr><th>Clase</th><td>Metilxantina (alcaloide)</td></tr>
+            <tr><th>Otros nombres</th><td>teína, mateína, guaranina</td></tr>
+            <tr><th>CAS</th><td>58-08-2</td></tr>
+            <tr><th>PubChem CID</th><td>2519</td></tr>
+            <tr><th>ChEBI</th><td>CHEBI:27732</td></tr>
+            <tr><th>InChIKey</th><td><code>RYYVLZVUVIJVGH-UHFFFAOYSA-N</code></td></tr>
+            <tr><th>SMILES</th><td><code>CN1C=NC2=C1C(=O)N(C)C(=O)N2C</code></td></tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>
