@@ -86,19 +86,22 @@
       color:var(--muted);
     }
     .structure{
-      border:1px solid var(--line);
-      border-radius:14px;
-      background:#fff;
-      display:grid;
-      place-items:center;
+      height:320px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      border-radius:18px;
+      border:1px solid rgba(31,41,55,.10);
+      background:rgba(255,255,255,.75);
       overflow:hidden;
-      min-height:220px;
-      position:relative;
-      padding:10px;
     }
-    .structure object{
-      width:100%;
-      height:100%;
+    .molImg{
+      max-width:100%;
+      max-height:100%;
+      width:auto;
+      height:auto;
+      object-fit:contain;
       display:block;
     }
     .fallback{
@@ -128,17 +131,15 @@
     <section class="middle">
       <div class="chips" aria-label="Conceptos clave">
         <span class="chip">misma molécula</span>
-        <span class="chip">empaque</span>
-        <span class="chip">dosis</span>
+        <span class="chip">dosis distinta</span>
+        <span class="chip">contexto distinto</span>
       </div>
 
       <aside class="formula" aria-label="Identidad química">
         <h2>C8H10N4O2</h2>
         <p>1,3,7-trimetilxantina</p>
         <div class="structure">
-          <object data="caffeine_structure.svg" type="image/svg+xml" aria-label="Estructura química de la cafeína">
-            <div class="fallback">Estructura de la cafeína</div>
-          </object>
+          <img class="molImg" src="caffeine_structure.svg" alt="Estructura química de la cafeína" />
         </div>
       </aside>
     </section>
