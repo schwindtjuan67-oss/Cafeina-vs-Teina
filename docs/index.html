@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cafeína vs “Mateína”</title>
+  <style>
+    :root{
+      --bg:#faf7f2;
+      --paper:#ffffff;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --line:rgba(31,41,55,.10);
+      --accent:#7c5cff; /* lavanda suave */
+      --accent2:#0ea5e9; /* azul lluvia */
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--ink);
+      background:
+        radial-gradient(1000px 600px at 20% 0%, rgba(124,92,255,.10), transparent 60%),
+        radial-gradient(900px 500px at 85% 10%, rgba(14,165,233,.10), transparent 60%),
+        var(--bg);
+      line-height:1.6;
+    }
+    .wrap{max-width:960px; margin:0 auto; padding:48px 18px 72px;}
+    .top{
+      display:flex; gap:18px; align-items:flex-start; justify-content:space-between;
+      margin-bottom:22px;
+    }
+    h1{margin:0; font-size:34px; letter-spacing:.2px}
+    .sub{margin:8px 0 0; color:var(--muted); max-width:52ch}
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+    .chip{
+      font-size:13px; padding:6px 10px; border-radius:999px;
+      background:rgba(255,255,255,.75);
+      border:1px solid var(--line);
+      color:var(--muted);
+      backdrop-filter: blur(6px);
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      margin-top:18px;
+    }
+    @media (max-width: 920px){
+      .top{flex-direction:column}
+      .grid{grid-template-columns:1fr}
+    }
+    .card{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      box-shadow: 0 10px 28px rgba(31,41,55,.06);
+    }
+    h2{margin:0 0 10px; font-size:18px}
+    .muted{color:var(--muted)}
+    .mono{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 13px;
+      background: rgba(31,41,55,.03);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px;
+      overflow:auto;
+      white-space:pre;
+    }
+    .img{
+      width:100%;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background: rgba(31,41,55,.02);
+      padding:10px;
+    }
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .hr{
+      height:1px; background:var(--line);
+      margin:14px 0 0;
+    }
+    .footer{
+      margin-top:18px; color:var(--muted); font-size:13px;
+      display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;
+    }
+    .mark{
+      display:inline-block;
+      padding:1px 8px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(124,92,255,.08);
+      color:#4c1d95;
+      font-weight:600;
+      font-size:12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>Cafeína vs “Mateína” ☕🧉</h1>
+        <p class="sub">
+          Un recordatorio chill: a nivel químico es la misma molécula; lo que cambia es el contexto.
+          Ideal para una tarde de café y lluvia.
+        </p>
+
+        <div class="chips">
+          <span class="chip">Identidad molecular: misma molécula</span>
+          <span class="chip">Diferencia percibida: matriz + co-compuestos</span>
+          <span class="chip">“Darwiniana”: selección cultural del nombre</span>
+        </div>
+      </div>
+
+      <div class="card" style="min-width: 280px;">
+        <h2>Veredicto químico</h2>
+        <div class="mono">mateína:
+  fórmula    = C8H10N4O2
+  estructura = 1,3,7-trimetilxantina
+
+cafeína:
+  fórmula    = C8H10N4O2
+  estructura = 1,3,7-trimetilxantina
+
+⇒ MISMA MOLÉCULA ✅</div>
+        <div class="hr"></div>
+        <p class="muted" style="margin:12px 0 0;">
+          “Mateína” funciona como etiqueta cultural. El compuesto principal es cafeína.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>¿Entonces por qué “se siente distinto”?</h2>
+        <p class="muted" style="margin-top:-4px;">
+          La diferencia típica vive en el “pack” alrededor de la cafeína:
+        </p>
+        <ul>
+          <li><b>Planta</b>: mate (<i>Ilex paraguariensis</i>) vs café (<i>Coffea</i> spp.)</li>
+          <li><b>Matriz de consumo</b>: mate fraccionado (cebadas) vs café más concentrado por taza</li>
+          <li><b>Co-compuestos</b>: polifenoles/taninos/ácidos que modulan percepción y tolerancia</li>
+          <li><b>Expectativas</b>: set & setting (tu cerebro interpreta el estímulo con contexto)</li>
+        </ul>
+
+        <h2 style="margin-top:18px;">Segmentación “darwiniana” (memética)</h2>
+        <p class="muted" style="margin-top:-4px;">
+          No es selección natural de moléculas. Es selección cultural de <b>etiquetas</b>.
+          Sobrevive el nombre que mejor se propaga y cumple una función.
+        </p>
+        <ul>
+          <li><b>Identidad</b>: “mate ≠ café” (pertenencia)</li>
+          <li><b>Explicación simple</b>: “me pega distinto” sin bioquímica</li>
+          <li><b>Propagación</b>: suena técnico y se repite fácil</li>
+        </ul>
+
+        <div class="footer">
+          <span class="mark">mood: café + lluvia</span>
+          <span>
+            Repo: <a href="../" title="Volver al repo (si estás navegando en GitHub)">GitHub</a>
+          </span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Estructura</h2>
+        <p class="muted" style="margin-top:-4px;">
+          La misma estructura para cafeína / “mateína”.
+        </p>
+        <img class="img" src="caffeine_structure.png" alt="Estructura de cafeína">
+        <p class="muted" style="margin:12px 0 0; font-size:13px;">
+          Tip: podés reemplazar esta imagen por una versión más HD si querés.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

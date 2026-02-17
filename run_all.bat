@@ -1,52 +1,22 @@
 @echo off
 setlocal ENABLEDELAYEDEXPANSION
-
-REM ==========================================================
-REM  RUN_ALL.BAT - Todo en uno:
-REM   - crea venv (.venv)
-REM   - instala deps (requirements.txt o matplotlib)
-REM   - corre mateina_vs_cafeina.py
-REM   - muestra texto + abre imagen
-REM ==========================================================
-
-REM Ir a la carpeta del proyecto (donde está este .bat)
 cd /d "%~dp0"
 
-REM --- Config ---
 set "VENV_DIR=.venv"
-set "IMAGE_FILE=caffeine_structure.png"
-
-REM --- Elegir python base (para crear venv) ---
-REM Si "python" no está en PATH, poné ruta fija:
-REM set "PYEXE=C:\Python314\python.exe"
 set "PYEXE=python"
-
-set "VENV_PY=%VENV_DIR%\Scripts\python.exe"
+set "IMAGE_FILE=caffeine_structure.png"
 
 echo ==========================================================
 echo [0] Proyecto: %CD%
 echo ==========================================================
 
-REM --- Checks básicos de archivos ---
-if not exist "mateina_vs_cafeina.py" (
-  echo [ERROR] No existe mateina_vs_cafeina.py en esta carpeta.
-  echo         Copialo aqui y volve a ejecutar.
-  pause
-  exit /b 1
-)
-
-if not exist "%IMAGE_FILE%" (
-  echo [WARN] No existe %IMAGE_FILE% en esta carpeta.
-  echo        El script correra igual pero no podra mostrar la imagen.
-)
-
 echo.
 echo ==========================================================
 echo [1/4] Verificando Python base...
 echo ==========================================================
-"%PYEXE%" --version
+%PYEXE% --version
 if errorlevel 1 (
-  echo [ERROR] No se encontro Python. Ajusta PYEXE en este .bat o agrega Python al PATH.
+  echo [ERROR] No se encontro Python. Ajusta PYEXE o agrega Python al PATH.
   pause
   exit /b 1
 )
@@ -55,8 +25,8 @@ echo.
 echo ==========================================================
 echo [2/4] Creando venv si no existe: %VENV_DIR%
 echo ==========================================================
-if not exist "%VENV_PY%" (
-  "%PYEXE%" -m venv "%VENV_DIR%"
+if not exist "%VENV_DIR%\Scripts\python.exe" (
+  %PYEXE% -m venv "%VENV_DIR%"
   if errorlevel 1 (
     echo [ERROR] Fallo al crear el venv.
     pause
@@ -66,6 +36,38 @@ if not exist "%VENV_PY%" (
 ) else (
   echo [OK] venv ya existe.
 )
+
+set "VENV_PY=%VENV_DIR%\Scripts\python.exe"
+
+echo.
+echo ==========================================================
+echo [2.5/4] Verificando pip dentro del venv...
+echo ==========================================================
+"%VENV_PY%" -m pip --version >nul 2>&1
+if errorlevel 1 (
+  echo [WARN] pip NO esta disponible en el venv. Intentando reparar con ensurepip...
+  "%VENV_PY%" -m ensurepip --upgrade >nul 2>&1
+  "%VENV_PY%" -m pip --version >nul 2>&1
+  if errorlevel 1 (
+    echo [WARN] ensurepip no lo arreglo. Rehaciendo venv desde cero...
+    rmdir /s /q "%VENV_DIR%" >nul 2>&1
+    %PYEXE% -m venv "%VENV_DIR%"
+    if errorlevel 1 (
+      echo [ERROR] Fallo al recrear el venv.
+      pause
+      exit /b 1
+    )
+    set "VENV_PY=%VENV_DIR%\Scripts\python.exe"
+    "%VENV_PY%" -m ensurepip --upgrade >nul 2>&1
+    "%VENV_PY%" -m pip --version >nul 2>&1
+    if errorlevel 1 (
+      echo [ERROR] Sigue sin pip. Reinstala Python con pip+venv habilitados.
+      pause
+      exit /b 1
+    )
+  )
+)
+echo [OK] pip esta listo en el venv.
 
 echo.
 echo ==========================================================
@@ -78,37 +80,34 @@ if errorlevel 1 (
   exit /b 1
 )
 
-REM Instala deps
 if exist "requirements.txt" (
   echo [INFO] Instalando desde requirements.txt
-  "%VENV_PY%" -m pip install -r "requirements.txt"
+  "%VENV_PY%" -m pip install -r requirements.txt
 ) else (
-  echo [INFO] requirements.txt no encontrado. Instalando minimo: matplotlib
-  "%VENV_PY%" -m pip install matplotlib
+  echo [INFO] requirements.txt no encontrado. (No hace falta matplotlib para localhost)
 )
 
-if errorlevel 1 (
-  echo [ERROR] Fallo la instalacion de dependencias.
+echo.
+echo ==========================================================
+echo [4/4] Levantando localhost...
+echo ==========================================================
+if not exist "app.py" (
+  echo [ERROR] Falta app.py (crealo con el script que te pase).
   pause
   exit /b 1
 )
 
-echo.
-echo ==========================================================
-echo [4/4] Corriendo demo (texto + imagen)...
-echo ==========================================================
-echo [INFO] Si hay matplotlib, la imagen se mostrara en una ventana.
-echo [INFO] Si no, el script intentara abrirla con el visor de Windows.
+echo [INFO] Abrira el navegador en http://127.0.0.1:8000/
+echo [INFO] Para cerrar: CTRL+C en esta ventana.
 echo.
 
-"%VENV_PY%" "mateina_vs_cafeina.py" --image "%IMAGE_FILE%"
+"%VENV_PY%" app.py --image "%IMAGE_FILE%"
 set "EXITCODE=%ERRORLEVEL%"
 
 echo.
 echo ==========================================================
 echo Fin. ExitCode=%EXITCODE%
 echo ==========================================================
-echo.
 pause
 endlocal
 exit /b %EXITCODE%
